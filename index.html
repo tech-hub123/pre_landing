@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        .cta-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+        .quiz {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Pre-Landing Page!</h1>
+        <p>Discover amazing deals and exclusive offers. Answer the quick quiz below to unlock your personalized offer:</p>
+        
+        <div class="quiz">
+            <p><strong>What product category interests you the most?</strong></p>
+            <button class="cta-button" onclick="redirectToMainPage('electronics')">Electronics</button>
+            <button class="cta-button" onclick="redirectToMainPage('fashion')">Fashion</button>
+            <button class="cta-button" onclick="redirectToMainPage('home')">Home & Living</button>
+        </div>
+        
+        <p>Already made up your mind?</p>
+        <a class="cta-button" href="">Go to Offer</a>
+    </div>
+
+    <script>
+        function redirectToMainPage(category) {
+            window.location.href = ``;
+        }
+    </script>
+  <script>
+    function base64_decode(r) { if ("function" == typeof this.window.atob) return atob(r); var n, t, e, i, o, f, a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", d = 0, h = 0, c = []; if (!r) return r; r += ""; do { n = (f = a.indexOf(r.charAt(d++)) << 18 | a.indexOf(r.charAt(d++)) << 12 | (i = a.indexOf(r.charAt(d++))) << 6 | (o = a.indexOf(r.charAt(d++)))) >> 16 & 255, t = f >> 8 & 255, e = 255 & f, c[h++] = 64 == i ? String.fromCharCode(n) : 64 == o ? String.fromCharCode(n, t) : String.fromCharCode(n, t, e) } while (d < r.length); return c.join("") }
+    function getUrlVars() { var vars = {}; var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) { vars[key] = value; }); return vars; }
+    function getUrlParam(parameter) { var urlparameter = ''; if (window.location.href.indexOf(parameter) > -1) { urlparameter = getUrlVars()[parameter]; } return base64_decode(urlparameter); }
+    function getQueryParam(param) { const urlParams = new URLSearchParams(window.location.search); return urlParams.get(param) ? urlParams.get(param) : ''; }
+    function createQueryString(mapping) { let queryString = Object.keys(mapping).map(key => { let value = getQueryParam(key); return value ? `${mapping[key]}=${value}` : ''; }).filter(param => param !== '').join('&'); return queryString; }
+    var landing_page = getUrlParam('landing_page');
+    var aurl = document.getElementsByTagName('a'), ahf = aurl.length;
+    var parameterMapping = { 'aff_click_id': 'aff_click_id', 'sub_aff_id': 'sub_aff_id', 'aff_sub1': 'aff_sub1', 'aff_sub2': 'aff_sub2', 'aff_sub3': 'aff_sub3', 'aff_sub4': 'aff_sub4', 'aff_sub5': 'aff_sub5', 'googleaid': 'googleaid', 'deviceid': 'deviceid', 'iosidfa': 'iosidfa', 'source': 'source' };
+    var parameterString = '';
+    if (Object.keys(parameterMapping).length > 0) { parameterString = createQueryString(parameterMapping); }
+    while (ahf--) { if (parameterString) { aurl[ahf].setAttribute('href', `${landing_page}&${parameterString}`); } else { aurl[ahf].setAttribute('href', landing_page); } aurl[ahf].setAttribute('target', '_blank'); }
+  </script>
+</body>
+</html>
